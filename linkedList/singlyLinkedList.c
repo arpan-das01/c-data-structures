@@ -24,10 +24,10 @@ void display(void);
 int main()
 {
     int choice, data;
-    printf("YOU ARE USING A SINGLY LINKED LIST PROGRAM\n\n");
+    printf("YOU ARE USING A SINGLY LINKED LIST PROGRAM");
 
     do{
-        printf("\nEnter Your Choice:\n");
+        printf("\n\nEnter Your Choice:\n");
         printf("\n0: Exit\n1: Insert Data at the Front\n2: Insert Data at the Back\n3: Delete Data at the Front\n4: Delete Data at the Back\n5: Display All Values\n\nYou Entered: ");
         scanf("%d", &choice);
 
@@ -60,10 +60,10 @@ int main()
                     printf("\ndata was deleted successfully at the back\n");
                 else
                     printf("\nFAILED TO DELETE DATA AT THE BACK!\n");
-                break;
+                break;*/
 
         case 5: display();
-                break;*/
+                break;
         
         default: printf("\nINVALID CHOICE!\nTRY AGAIN\n");
                  break;
@@ -96,8 +96,30 @@ int push_back(int data)
 
     new_node->data = data;
     new_node->link = NULL;
-    while (temp_node->link != NULL)
-        temp_node = temp_node->link;
-    temp_node->link = new_node;
+    if (head_node == NULL)
+        head_node = new_node;
+    else
+    {
+        while (temp_node->link != NULL)
+            temp_node = temp_node->link;
+        temp_node->link = new_node;
+    }
     return 1;
+}
+
+void display()
+{
+    List *current_node = head_node;
+    if(head_node == NULL)
+    {
+        printf("\nTHE LINKED LIST IS EMPTY!\n");
+        return;
+    }
+
+    while (current_node->link != NULL)
+    {
+        printf("\nData: %d", current_node->data);
+        current_node = current_node->link;
+    }
+    printf("\nData: %d", current_node->data);
 }
