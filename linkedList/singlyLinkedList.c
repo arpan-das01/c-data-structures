@@ -50,7 +50,7 @@ int main()
                     printf("\nFAILED TO INSERT %d AT BACK!\n", data);
                 break;
 
-        case 3: if (pop_front())
+        /*case 3: if (pop_front())
                     printf("\ndata was deleted successfully at the front\n");
                 else
                     printf("\nFAILED TO DELETE DATA AT THE FRONT!\n");
@@ -63,7 +63,7 @@ int main()
                 break;
 
         case 5: display();
-                break;
+                break;*/
         
         default: printf("\nINVALID CHOICE!\nTRY AGAIN\n");
                  break;
@@ -88,3 +88,16 @@ int push_front(int data)
     return 1;
 }
 
+int push_back(int data)
+{
+    List *temp_node = head_node, *new_node = malloc(sizeof(List));
+    if (new_node == NULL)
+        return 0;
+
+    new_node->data = data;
+    new_node->link = NULL;
+    while (temp_node->link != NULL)
+        temp_node = temp_node->link;
+    temp_node->link = new_node;
+    return 1;
+}
