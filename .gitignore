@@ -1,7 +1,7 @@
 .vscode
 Thumbs.db
-.temp
-.exe
-.o
-.obj
-.log
+*.temp
+*.exe
+*.o
+*.obj
+*.log
