@@ -56,11 +56,11 @@ int main()
                     printf("\nTHE LINKED LIST IS EMPTY!\n");
                 break;
 
-        /*case 4: if (pop_back())
+        case 4: if (pop_back())
                     printf("\ndata was deleted successfully at the back\n");
                 else
                     printf("\nTHE LINKED LIST IS EMPTY!\n");
-                break;*/
+                break;
 
         case 5: display();
                 break;
@@ -110,7 +110,7 @@ int push_back(int data)
 void display()
 {
     List *current_node = head_node;
-    if(head_node == NULL)
+    if (head_node == NULL)
     {
         printf("\nTHE LINKED LIST IS EMPTY!\n");
         return;
@@ -131,6 +131,29 @@ int pop_front()
         return 0 ;
 
     head_node = head_node->link;
+    free(current_node);
+    return 1;
+}
+
+int pop_back()
+{
+    List *current_node = head_node, *prev_node = head_node;
+    if (head_node == NULL)
+        return 0;
+
+    if (head_node->link == NULL)
+    {
+        free(head_node);
+        head_node = NULL;
+        return 1;
+    }
+
+    while (current_node->link != NULL)
+    {
+        prev_node = current_node;
+        current_node = current_node->link;
+    }
+    prev_node->link = NULL;
     free(current_node);
     return 1;
 }
