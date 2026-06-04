@@ -50,16 +50,16 @@ int main()
                     printf("\nFAILED TO INSERT %d AT BACK!\n", data);
                 break;
 
-        /*case 3: if (pop_front())
+        case 3: if (pop_front())
                     printf("\ndata was deleted successfully at the front\n");
                 else
-                    printf("\nFAILED TO DELETE DATA AT THE FRONT!\n");
+                    printf("\nTHE LINKED LIST IS EMPTY!\n");
                 break;
 
-        case 4: if (pop_back())
+        /*case 4: if (pop_back())
                     printf("\ndata was deleted successfully at the back\n");
                 else
-                    printf("\nFAILED TO DELETE DATA AT THE BACK!\n");
+                    printf("\nTHE LINKED LIST IS EMPTY!\n");
                 break;*/
 
         case 5: display();
