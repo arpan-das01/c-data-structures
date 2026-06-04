@@ -123,3 +123,14 @@ void display()
     }
     printf("\nData: %d", current_node->data);
 }
+
+int pop_front()
+{
+    List *current_node = head_node;
+    if (head_node == NULL)
+        return 0 ;
+
+    head_node = head_node->link;
+    free(current_node);
+    return 1;
+}
