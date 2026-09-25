@@ -1,10 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define MAX 20
 
 int push(int data);
 int pop(void);
 void display(void);
 
+int is_empty(void);
+int is_full(void);
+
+int stack[MAX], top = -1;
 // just copied some code from singlyLinkedList
 
 int main()
@@ -43,4 +48,12 @@ int main()
     }while(choice!=0);
     
     return 0;
+}
+
+int is_empty(void)
+{
+    if (top == -1)
+        return 1;
+    else
+        return 0;
 }
