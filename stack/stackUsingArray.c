@@ -11,7 +11,7 @@ void init_stack(Stack *new);
 
 int push(Stack *stack1, int data);
 int pop(Stack *stack1);
-//void display(Stack *stack1);
+void display(Stack *stack1);
 
 int is_empty(Stack *stack1);
 int is_full(Stack *stack1);
@@ -48,8 +48,8 @@ int main()
                     printf("\nTHE STACK IS EMPTY!\n");
                 break;
 
-        /*case 3: display(stack1);
-                break;*/
+        case 3: display(stack1);
+                break;
         
         default: printf("\nINVALID CHOICE!\nTRY AGAIN\n");
                  break;
@@ -100,5 +100,20 @@ int pop(Stack *stack1)
     {
         --stack1->top;
         return 1;
+    }
+}
+
+void display(Stack *stack1)
+{
+    if(is_empty(stack1))
+        printf("\nStack is empty!");
+    else
+    {
+        int i = stack1->top;
+        while(i != -1)
+        {
+            printf("\n| %d | [%d]", stack1->data[i], i);
+            --i;
+        }
     }
 }
