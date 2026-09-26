@@ -10,7 +10,7 @@ typedef struct {
 void init_stack(Stack *new);
 
 int push(Stack *stack1, int data);
-//int pop(Stack *stack1);
+int pop(Stack *stack1);
 //void display(Stack *stack1);
 
 int is_empty(Stack *stack1);
@@ -42,13 +42,13 @@ int main()
                     printf("\nFAILED TO PUSH %d!\n", data);
                 break;
 
-        /*case 2: if (pop(stack1))
+        case 2: if (pop(stack1))
                     printf("\ndata was popped successfully\n");
                 else
                     printf("\nTHE STACK IS EMPTY!\n");
                 break;
 
-        case 3: display(stack1);
+        /*case 3: display(stack1);
                 break;*/
         
         default: printf("\nINVALID CHOICE!\nTRY AGAIN\n");
@@ -88,6 +88,17 @@ int push(Stack *stack1, int data)
     {
         ++stack1->top;
         stack1->data[stack1->top] = data;
+        return 1;
+    }
+}
+
+int pop(Stack *stack1)
+{
+    if(is_empty(stack1))
+        return 0;
+    else
+    {
+        --stack1->top;
         return 1;
     }
 }
