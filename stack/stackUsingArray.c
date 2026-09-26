@@ -2,18 +2,27 @@
 #include <stdlib.h>
 #define MAX 5
 
-int push(int data);
-//int pop(void);
-//void display(void);
+typedef struct {
+    int data[MAX];
+    int top;
+} Stack;
 
-int is_empty(void);
-int is_full(void);
+void init_stack(Stack *new);
 
-int stack[MAX], top = -1;
+int push(Stack *stack1, int data);
+//int pop(Stack *stack1);
+//void display(Stack *stack1);
+
+int is_empty(Stack *stack1);
+int is_full(Stack *stack1);
+
 // just copied some code from singlyLinkedList
 
 int main()
 {
+    Stack *stack1;
+    init_stack(stack1);
+
     int choice, data;
     printf("YOU ARE USING A STACK IMPLEMENTED USING ARRAY PROGRAM");
 
@@ -27,19 +36,19 @@ int main()
         case 0: return 0;
         case 1: printf("\nEnter an integer value to push: ");
                 scanf("%d", &data);
-                if (push(data))
+                if (push(stack1, data))
                     printf("\n%d was pushed successfully\n", data);
                 else
                     printf("\nFAILED TO PUSH %d!\n", data);
                 break;
 
-        /*case 2: if (pop())
+        /*case 2: if (pop(stack1))
                     printf("\ndata was popped successfully\n");
                 else
                     printf("\nTHE STACK IS EMPTY!\n");
                 break;
 
-        case 3: display();
+        case 3: display(stack1);
                 break;*/
         
         default: printf("\nINVALID CHOICE!\nTRY AGAIN\n");
@@ -50,30 +59,35 @@ int main()
     return 0;
 }
 
-int is_empty(void)
+void init_stack(Stack *new)
 {
-    if (top == -1)
+    new->top = -1;
+}
+
+int is_empty(Stack *stack1)
+{
+    if (stack1->top == -1)
         return 1;
     else
         return 0;
 }
 
-int is_full(void)
+int is_full(Stack *stack1)
 {
-    if (top == MAX - 1)
+    if (stack1->top == MAX - 1)
         return 1;
     else
         return 0;
 }
 
-int push(int data)
+int push(Stack *stack1, int data)
 {
-    if(is_full())
+    if(is_full(stack1))
         return 0;
     else
     {
-        ++top;
-        stack[top] = data;
+        ++stack1->top;
+        stack1->data[stack1->top] = data;
         return 1;
     }
 }
