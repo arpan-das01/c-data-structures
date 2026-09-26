@@ -11,6 +11,7 @@ void init_stack(Stack *new);
 
 int push(Stack *stack1, int data);
 int pop(Stack *stack1);
+int peek(Stack *stack);
 void display(Stack *stack1);
 
 int is_empty(Stack *stack1);
@@ -28,7 +29,7 @@ int main()
 
     do{
         printf("\n\nEnter Your Choice:\n");
-        printf("\n0: Exit\n1: Push Data\n2: Pop Data\n3: Display All Values\n\nYou Entered: ");
+        printf("\n0: Exit\n1: Push Data\n2: Pop Data\n3: Display All Values\n4: Peek\n\nYou Entered: ");
         scanf("%d", &choice);
 
         switch (choice)
@@ -49,6 +50,12 @@ int main()
                 break;
 
         case 3: display(stack1);
+                break;
+        
+        case 4: if (is_empty(stack1))
+                    printf("\nTHE STACK IS EMPTY!\n");
+                else
+                    printf("\nPeeked Value:\n%d", peek(stack1));                    
                 break;
         
         default: printf("\nINVALID CHOICE!\nTRY AGAIN\n");
@@ -116,4 +123,9 @@ void display(Stack *stack1)
             --i;
         }
     }
+}
+
+int peek(Stack *stack1)
+{
+    return stack1->data[stack1->top];
 }
