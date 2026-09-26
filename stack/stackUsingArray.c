@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX 20
+#define MAX 5
 
 int push(int data);
-int pop(void);
-void display(void);
+//int pop(void);
+//void display(void);
 
 int is_empty(void);
 int is_full(void);
@@ -33,14 +33,14 @@ int main()
                     printf("\nFAILED TO PUSH %d!\n", data);
                 break;
 
-        case 2: if (pop())
+        /*case 2: if (pop())
                     printf("\ndata was popped successfully\n");
                 else
                     printf("\nTHE STACK IS EMPTY!\n");
                 break;
 
         case 3: display();
-                break;
+                break;*/
         
         default: printf("\nINVALID CHOICE!\nTRY AGAIN\n");
                  break;
@@ -56,4 +56,24 @@ int is_empty(void)
         return 1;
     else
         return 0;
+}
+
+int is_full(void)
+{
+    if (top == MAX - 1)
+        return 1;
+    else
+        return 0;
+}
+
+int push(int data)
+{
+    if(is_full())
+        return 0;
+    else
+    {
+        ++top;
+        stack[top] = data;
+        return 1;
+    }
 }
