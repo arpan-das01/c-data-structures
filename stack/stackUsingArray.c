@@ -21,7 +21,8 @@ int is_full(Stack *stack1);
 
 int main()
 {
-    Stack *stack1;
+    Stack stack;
+    Stack *stack1 = &stack;
     init_stack(stack1);
 
     int choice, data;
